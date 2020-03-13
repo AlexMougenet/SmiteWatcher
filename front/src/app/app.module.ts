@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PAGES } from './pages/index';
 import { SERVICES } from './services';
+import { COMPONENTS } from './components';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ...PAGES
+    ...PAGES,
+    ...COMPONENTS,
   ],
   imports: [
     BrowserModule,

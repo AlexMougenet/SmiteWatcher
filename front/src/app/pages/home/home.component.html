@@ -1,3 +1,15 @@
-<p>
-  home works!
-</p>
+<ng-container>
+  <app-search (search)="search($event)"></app-search>
+
+  <div class="container-result" *ngIf="showSearchResults">
+    <div *ngFor="let p of players">
+      <app-search-result [player]="p" (click)="display(p)"></app-search-result>
+    </div>
+  </div>
+
+  <div class="container-player" *ngIf="!showSearchResults">
+    <div *ngFor="let p of players">
+      <app-search-result [player]="p" (click)="display(p)"></app-search-result>
+    </div>
+  </div>
+</ng-container>

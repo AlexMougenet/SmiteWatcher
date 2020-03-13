@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  background-color: #363636;
+}
+
+// reset
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  color: white;
+  button {
+    color: white;
+  }
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input {
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 2px;
+  border: 1px solid #099fe3;
+}
+button {
+  margin-top: 5px;
+  padding: 5px 15px;
+  border-radius: 2px;
+  background-color: #099fe3;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  &[disabled] {
+    opacity: 0.6;
+  }
+}

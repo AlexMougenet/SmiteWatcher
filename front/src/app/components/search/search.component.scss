@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  justify-self: center;
+  .center {
+    margin: auto;
+    button {
+      margin-left: 10px;
+    }
+  }
+}

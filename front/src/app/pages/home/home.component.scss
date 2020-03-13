@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  max-width: 1200px;
+  padding: 0 30px;
+  margin: auto;
+  .container-result {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 10px;
+    app-search-result {
+      margin: 0 10px;
+    }
+  }
+}
