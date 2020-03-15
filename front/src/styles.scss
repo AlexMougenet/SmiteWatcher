@@ -53,3 +53,14 @@ button {
     opacity: 0.6;
   }
 }
+
+a {
+  color: #099fe3;
+  text-decoration: none;;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

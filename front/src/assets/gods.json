@@ -1,0 +1,434 @@
+[
+  {
+    "name": "Achilles",
+    "id": 3492
+  },
+  {
+    "name": "Agni",
+    "id": 1737
+  },
+  {
+    "name": "Ah Muzen Cab",
+    "id": 1956
+  },
+  {
+    "name": "Ah Puch",
+    "id": 2056
+  },
+  {
+    "name": "Amaterasu",
+    "id": 2110
+  },
+  {
+    "name": "Anhur",
+    "id": 1773
+  },
+  {
+    "name": "Anubis",
+    "id": 1668
+  },
+  {
+    "name": "Ao Kuang",
+    "id": 2034
+  },
+  {
+    "name": "Aphrodite",
+    "id": 1898
+  },
+  {
+    "name": "Apollo",
+    "id": 1899
+  },
+  {
+    "name": "Arachne",
+    "id": 1699
+  },
+  {
+    "name": "Ares",
+    "id": 1782
+  },
+  {
+    "name": "Artemis",
+    "id": 1748
+  },
+  {
+    "name": "Artio",
+    "id": 3336
+  },
+  {
+    "name": "Athena",
+    "id": 1919
+  },
+  {
+    "name": "Awilix",
+    "id": 2037
+  },
+  {
+    "name": "Bacchus",
+    "id": 1809
+  },
+  {
+    "name": "Bakasura",
+    "id": 1755
+  },
+  {
+    "name": "Baron Samedi",
+    "id": 3518
+  },
+  {
+    "name": "Bastet",
+    "id": 1678
+  },
+  {
+    "name": "Bellona",
+    "id": 2047
+  },
+  {
+    "name": "Cabrakan",
+    "id": 2008
+  },
+  {
+    "name": "Camazotz",
+    "id": 2189
+  },
+  {
+    "name": "Cerberus",
+    "id": 3419
+  },
+  {
+    "name": "Cernunnos",
+    "id": 2268
+  },
+  {
+    "name": "Chaac",
+    "id": 1966
+  },
+  {
+    "name": "Chang'e",
+    "id": 1921
+  },
+  {
+    "name": "Chernobog",
+    "id": 3509
+  },
+  {
+    "name": "Chiron",
+    "id": 2075
+  },
+  {
+    "name": "Chronos",
+    "id": 1920
+  },
+  {
+    "name": "Cu Chulainn",
+    "id": 2319
+  },
+  {
+    "name": "Cupid",
+    "id": 1778
+  },
+  {
+    "name": "Da Ji",
+    "id": 2270
+  },
+  {
+    "name": "Discordia",
+    "id": 3377
+  },
+  {
+    "name": "Erlang Shen",
+    "id": 2138
+  },
+  {
+    "name": "Fafnir",
+    "id": 2136
+  },
+  {
+    "name": "Fenrir",
+    "id": 1843
+  },
+  {
+    "name": "Freya",
+    "id": 1784
+  },
+  {
+    "name": "Ganesha",
+    "id": 2269
+  },
+  {
+    "name": "Geb",
+    "id": 1978
+  },
+  {
+    "name": "Guan Yu",
+    "id": 1763
+  },
+  {
+    "name": "Hachiman",
+    "id": 3344
+  },
+  {
+    "name": "Hades",
+    "id": 1676
+  },
+  {
+    "name": "He Bo",
+    "id": 1674
+  },
+  {
+    "name": "Heimdallr",
+    "id": 3812
+  },
+  {
+    "name": "Hel",
+    "id": 1718
+  },
+  {
+    "name": "Hera",
+    "id": 3558
+  },
+  {
+    "name": "Hercules",
+    "id": 1848
+  },
+  {
+    "name": "Horus",
+    "id": 3611
+  },
+  {
+    "name": "Hou Yi",
+    "id": 2040
+  },
+  {
+    "name": "Hun Batz",
+    "id": 1673
+  },
+  {
+    "name": "Isis",
+    "id": 1918
+  },
+  {
+    "name": "Izanami",
+    "id": 2179
+  },
+  {
+    "name": "Janus",
+    "id": 1999
+  },
+  {
+    "name": "Jing Wei",
+    "id": 2122
+  },
+  {
+    "name": "Jormungandr",
+    "id": 3585
+  },
+  {
+    "name": "Kali",
+    "id": 1649
+  },
+  {
+    "name": "Khepri",
+    "id": 2066
+  },
+  {
+    "name": "King Arthur",
+    "id": 3565
+  },
+  {
+    "name": "Kukulkan",
+    "id": 1677
+  },
+  {
+    "name": "Kumbhakarna",
+    "id": 1993
+  },
+  {
+    "name": "Kuzenbo",
+    "id": 2260
+  },
+  {
+    "name": "Loki",
+    "id": 1797
+  },
+  {
+    "name": "Medusa",
+    "id": 2051
+  },
+  {
+    "name": "Mercury",
+    "id": 1941
+  },
+  {
+    "name": "Merlin",
+    "id": 3566
+  },
+  {
+    "name": "Mulan",
+    "id": 3881
+  },
+  {
+    "name": "Ne Zha",
+    "id": 1915
+  },
+  {
+    "name": "Neith",
+    "id": 1872
+  },
+  {
+    "name": "Nemesis",
+    "id": 1980
+  },
+  {
+    "name": "Nike",
+    "id": 2214
+  },
+  {
+    "name": "Nox",
+    "id": 2036
+  },
+  {
+    "name": "Nu Wa",
+    "id": 1958
+  },
+  {
+    "name": "Odin",
+    "id": 1669
+  },
+  {
+    "name": "Olorun",
+    "id": 3664
+  },
+  {
+    "name": "Osiris",
+    "id": 2000
+  },
+  {
+    "name": "Pele",
+    "id": 3543
+  },
+  {
+    "name": "Persephone",
+    "id": 3705
+  },
+  {
+    "name": "Poseidon",
+    "id": 1881
+  },
+  {
+    "name": "Ra",
+    "id": 1698
+  },
+  {
+    "name": "Raijin",
+    "id": 2113
+  },
+  {
+    "name": "Rama",
+    "id": 2002
+  },
+  {
+    "name": "Ratatoskr",
+    "id": 2063
+  },
+  {
+    "name": "Ravana",
+    "id": 2065
+  },
+  {
+    "name": "Scylla",
+    "id": 1988
+  },
+  {
+    "name": "Serqet",
+    "id": 2005
+  },
+  {
+    "name": "Set",
+    "id": 3612
+  },
+  {
+    "name": "Skadi",
+    "id": 2107
+  },
+  {
+    "name": "Sobek",
+    "id": 1747
+  },
+  {
+    "name": "Sol",
+    "id": 2074
+  },
+  {
+    "name": "Sun Wukong",
+    "id": 1944
+  },
+  {
+    "name": "Susano",
+    "id": 2123
+  },
+  {
+    "name": "Sylvanus",
+    "id": 2030
+  },
+  {
+    "name": "Terra",
+    "id": 2147
+  },
+  {
+    "name": "Thanatos",
+    "id": 1943
+  },
+  {
+    "name": "The Morrigan",
+    "id": 2226
+  },
+  {
+    "name": "Thor",
+    "id": 1779
+  },
+  {
+    "name": "Thoth",
+    "id": 2203
+  },
+  {
+    "name": "Tyr",
+    "id": 1924
+  },
+  {
+    "name": "Ullr",
+    "id": 1991
+  },
+  {
+    "name": "Vamana",
+    "id": 1723
+  },
+  {
+    "name": "Vulcan",
+    "id": 1869
+  },
+  {
+    "name": "Xbalanque",
+    "id": 1864
+  },
+  {
+    "name": "Xing Tian",
+    "id": 2072
+  },
+  {
+    "name": "Yemoja",
+    "id": 3811
+  },
+  {
+    "name": "Ymir",
+    "id": 1670
+  },
+  {
+    "name": "Zeus",
+    "id": 1672
+  },
+  {
+    "name": "Zhong Kui",
+    "id": 1926
+  }
+]

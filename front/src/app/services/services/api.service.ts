@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ApiService {
+  gods: any;
   backendUrl = environment.backendUrl
 
   urls = {
@@ -22,6 +24,9 @@ export class ApiService {
     }
   });
 
-  constructor(
-  ) {}
+  constructor(private http: HttpClient) {
+    this.http.get(`assets/gods.json`, { responseType: 'json' }).subscribe(gods => {
+      this.gods = gods;
+    });
+  }
 }

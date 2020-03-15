@@ -1,0 +1,77 @@
+<ng-container>
+  <div class="header">
+    <span>{{ getQueueName() }} - {{ date() }}</span>
+    <span>{{ match.duration }}m</span>
+    <a href="https://smite.guru/match/{{ match.match_id }}" target="_blank">View Match</a>
+  </div>
+  <div class="row-1">
+    <div class="main-info">
+      <img src="https://static.smite.guru/i/champions/icons/{{ championName }}.jpg" alt="{{ championName }} avatar" class="avatar">
+      <div class="actives">
+        <img src="https://static.smite.guru/i/items/{{ player.actives['1'] }}.jpg" alt="active 1 avatar" class="active-1">
+        <img src="https://static.smite.guru/i/items/{{ player.actives['2'] }}.jpg" alt="active 2 avatar">
+      </div>
+    </div>
+    <div class="build-info">
+      <div>
+        <img src="https://static.smite.guru/i/items/{{ player.build['1'] }}.jpg" alt="item 1 avatar">
+        <img src="https://static.smite.guru/i/items/{{ player.build['2'] }}.jpg" alt="item 2 avatar">
+        <img src="https://static.smite.guru/i/items/{{ player.build['3'] }}.jpg" alt="item 3 avatar">
+      </div>
+      <div>
+        <img src="https://static.smite.guru/i/items/{{ player.build['4'] }}.jpg" alt="item 4 avatar">
+        <img src="https://static.smite.guru/i/items/{{ player.build['5'] }}.jpg" alt="item 5 avatar">
+        <img src="https://static.smite.guru/i/items/{{ player.build['6'] }}.jpg" alt="item 6 avatar">
+      </div>
+    </div>
+    <div class="kda-info">
+      <div>
+        <span class="blue">{{ player.kills }} - </span>
+        <span class="red">{{ player.deaths }} - </span>
+        <span>{{ player.assists }}</span>
+      </div>
+      <div>
+        <span>Level {{ player.level }}</span>
+      </div>
+      <div>
+        <small>{{ player.gold.toLocaleString() }} Gold</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-2">
+    <div class="bans team1-bans">
+      <img *ngFor="let name of bannedChampionNamesTeam1" src="https://static.smite.guru/i/champions/icons/{{ name }}.jpg" alt="Banned {{ name }} avatar">
+    </div>
+    <div class="bans team2-bans">
+      <img *ngFor="let name of bannedChampionNamesTeam2" src="https://static.smite.guru/i/champions/icons/{{ name }}.jpg" alt="Banned {{ name }} avatar">
+    </div>
+  </div>
+
+  <div class="row-3">
+    <div class="teams">
+      <div class="team1-info">
+        <div *ngFor="let p of team1" (click)="display.emit(p)">
+          <img src="https://static.smite.guru/i/champions/icons/{{ smite.getChampionNameById(p.champion) }}.jpg" alt="{{ name }} avatar">
+          <small class="text-ellipsis">{{ p.name }}</small>
+        </div>
+      </div>
+      <div class="team2-info">
+        <div *ngFor="let p of team2" (click)="display.emit(p)">
+          <img src="https://static.smite.guru/i/champions/icons/{{ smite.getChampionNameById(p.champion) }}.jpg" alt="{{ name }} avatar">
+          <small class="text-ellipsis">{{ p.name }}</small>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="global-info">
+        <p><small>Damage : </small><span>{{ player.damage.toLocaleString() }}</span></p>
+        <p><small>Taken : </small><span>{{ player.taken.toLocaleString() }}</span></p>
+        <p><small>Mitigated : </small><span>{{ player.mitigated.toLocaleString() }}</span></p>
+        <p><small>Wards : </small><span>{{ player.wards.toLocaleString() }}</span></p>
+        <p><small>Structure : </small><span>{{ player.structure_damage.toLocaleString() }}</span></p>
+      </div>
+    </div>
+  </div>
+</ng-container>

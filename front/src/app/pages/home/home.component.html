@@ -1,15 +1,92 @@
 <ng-container>
-  <app-search (search)="search($event)"></app-search>
-
-  <div class="container-result" *ngIf="showSearchResults">
-    <div *ngFor="let p of players">
-      <app-search-result [player]="p" (click)="display(p)"></app-search-result>
+  <div class="column">
+    <app-search (search)="search(1, $event)"></app-search>
+  
+    <div class="container-result" *ngIf="showSearchResults[1]">
+      <div *ngFor="let p of players[1]">
+        <app-search-result [player]="p" (click)="display(1, p)"></app-search-result>
+      </div>
+    </div>
+  
+    <div class="container-player" *ngIf="!showSearchResults[1]">
+      <div>
+        <label for="queue">Queue :</label>
+        <select id="queue" [ngModel]="filter[1].queue" (ngModelChange)="filterQueue(1, $event)">
+          <option [value]="null">All</option>
+          <option *ngFor="let q of objectKeys(queues)" [value]="q">{{ queues[q] }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="god">God:</label>
+        <select id="god" [ngModel]="filter[1].god" (ngModelChange)="filterGod(1, $event)">
+          <option [value]="null">All</option>
+          <option *ngFor="let g of api.gods" [value]="g.id">{{ g.name }}</option>
+        </select>
+      </div>
+  
+      <div *ngFor="let m of matches[1]">
+        <app-match-result *ngIf="showMatch(1, m)" [match]="m" (display)="display(1, $event)" class="{{ m.winning_team === 1 ? 'win' : 'loose' }}"></app-match-result>
+      </div>
     </div>
   </div>
-
-  <div class="container-player" *ngIf="!showSearchResults">
-    <div *ngFor="let p of players">
-      <app-search-result [player]="p" (click)="display(p)"></app-search-result>
+  <div class="column">
+    <app-search (search)="search(2, $event)"></app-search>
+  
+    <div class="container-result" *ngIf="showSearchResults[2]">
+      <div *ngFor="let p of players[2]">
+        <app-search-result [player]="p" (click)="display(2, p)"></app-search-result>
+      </div>
+    </div>
+  
+    <div class="container-player" *ngIf="!showSearchResults[2]">
+      <div>
+        <label for="queue">Queue :</label>
+        <select id="queue" [ngModel]="filter[2].queue" (ngModelChange)="filterQueue(2, $event)">
+          <option [value]="null">All</option>
+          <option *ngFor="let q of objectKeys(queues)" [value]="q">{{ queues[q] }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="god">God:</label>
+        <select id="god" [ngModel]="filter[2].god" (ngModelChange)="filterGod(2, $event)">
+          <option [value]="null">All</option>
+          <option *ngFor="let g of api.gods" [value]="g.id">{{ g.name }}</option>
+        </select>
+      </div>
+  
+      <div *ngFor="let m of matches[2]">
+        <app-match-result *ngIf="showMatch(2, m)" [match]="m" (display)="display(2, $event)" class="{{ m.winning_team === 1 ? 'win' : 'loose' }}"></app-match-result>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <app-search (search)="search(3, $event)"></app-search>
+  
+    <div class="container-result" *ngIf="showSearchResults[3]">
+      <div *ngFor="let p of players[3]">
+        <app-search-result [player]="p" (click)="display(3, p)"></app-search-result>
+      </div>
+    </div>
+  
+    <div class="container-player" *ngIf="!showSearchResults[3]">
+      <div>
+        <label for="queue">Queue :</label>
+        <select id="queue" [ngModel]="filter[3].queue" (ngModelChange)="filterQueue(3, $event)">
+          <option [value]="null">All</option>
+          <option *ngFor="let q of objectKeys(queues)" [value]="q">{{ queues[q] }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="god">God:</label>
+        <select id="god" [ngModel]="filter[3].god" (ngModelChange)="filterGod(3, $event)">
+          <option [value]="null">All</option>
+          <option *ngFor="let g of api.gods" [value]="g.id">{{ g.name }}</option>
+        </select>
+      </div>
+  
+      <div *ngFor="let m of matches[3]">
+        <app-match-result *ngIf="showMatch(3, m)" [match]="m" (display)="display(3,$event)" class="{{ m.winning_team === 1 ? 'win' : 'loose' }}"></app-match-result>
+      </div>
     </div>
   </div>
 </ng-container>

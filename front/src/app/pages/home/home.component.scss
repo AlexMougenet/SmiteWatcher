@@ -1,8 +1,14 @@
 :host {
-  display: block;
+  // display: block;
+  display: flex;
+  justify-content: space-between;
   max-width: 1200px;
-  padding: 0 30px;
+  // padding: 0 30px;
   margin: auto;
+
+  .column {
+    width: 30%;
+  }
   .container-result {
     display: flex;
     flex-flow: row wrap;
