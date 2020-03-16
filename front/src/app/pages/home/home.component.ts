@@ -20,6 +20,11 @@ export class HomePage {
     2: [],
     3: [],
   }
+  stats = {
+    1: null,
+    2: null,
+    3: null,
+  }
   showSearchResults = {
     1: false,
     2: false,
@@ -77,6 +82,11 @@ export class HomePage {
       this.matches[col] = matches;
       console.log(matches);
       this.showSearchResults[col] = false;
+    });
+
+    this.smiteguru.stats(`${player.id}-${player.name}`).then(r => {
+      this.stats[col] = r.data.queues[450];
+      console.log(this.stats[col]);
     });
   }
 

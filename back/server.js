@@ -15,7 +15,7 @@ const smiteGuruUrl = 'https://api.smite.guru/v3';
 
 const apiSmiteGuruUrls = {
   search: `${smiteGuruUrl}/search`, // ?term=cikidark&type=Player
-  historic: `${smiteGuruUrl}/profiles` // 1610525-CikiDark/matches?page=1
+  profiles: `${smiteGuruUrl}/profiles` // 1610525-CikiDark/matches?page=1
 };
 
 app.use(bodyParser.json());
@@ -49,7 +49,22 @@ app.post('/search', function (req, res) {
   });
 });
 app.post('/historic', function (req, res) {
-  const url = `${apiSmiteGuruUrls.historic}/${req.body.username}/matches?page=1`;
+  const url = `${apiSmiteGuruUrls.profiles}/${req.body.username}/matches?page=1`;
+  let chunks = [];
+  https.get(url, options, (r) => {
+    r.on('data', (d) => {
+      chunks.push(d);
+    });
+    r.on('end', () => {
+      let data = Buffer.concat(chunks);
+      res.send(JSON.parse(data));
+    });
+  }).on('error', (e) => {
+    console.error(e);
+  });
+});
+app.post('/stats', function (req, res) {
+  const url = `${apiSmiteGuruUrls.profiles}/${req.body.username}/queues?season=7&ranked=true`;
   let chunks = [];
   https.get(url, options, (r) => {
     r.on('data', (d) => {

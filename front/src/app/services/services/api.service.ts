@@ -12,7 +12,8 @@ export class ApiService {
     login: '/login',
     smiteguru: {
       search: '/search',
-      historic: '/historic'
+      historic: '/historic',
+      stats: '/stats'
     }
   };
 

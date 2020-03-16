@@ -65,5 +65,5 @@ export class MatchResultComponent implements OnInit {
     }
     return `${days} days ago`;
   }
-
+  
 }

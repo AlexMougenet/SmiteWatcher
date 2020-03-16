@@ -14,4 +14,8 @@ export class SmiteGuruService {
     return this.api.requester.post(this.api.urls.smiteguru.historic, { username });
   }
 
+  public stats(username: string) {
+    return this.api.requester.post(this.api.urls.smiteguru.stats, { username });
+  }
+
 }

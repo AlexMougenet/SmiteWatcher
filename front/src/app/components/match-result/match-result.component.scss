@@ -19,7 +19,7 @@
   }
 
   .row-1 {
-    padding: 10px;
+    padding-top: 10px;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -51,8 +51,10 @@
     }
 
     .build-info {
+      min-width: 130px;
       img {
         margin-left: 6px;
+        border: 1px solid #9b9b9b;
       }
     }
 
@@ -81,6 +83,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: 10px;
+
     .teams {
       display: flex;
       flex-direction: row;

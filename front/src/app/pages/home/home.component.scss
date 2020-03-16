@@ -17,4 +17,13 @@
       margin: 0 10px;
     }
   }
+
+  .filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    label {
+      margin-right: 10px;
+    }
+  }
 }

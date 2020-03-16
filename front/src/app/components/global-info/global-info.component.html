@@ -1,0 +1,15 @@
+<div class="player">
+  <div class="left">
+    <img src="https://static.smite.guru/i/ranked/450/{{ tierToRank(stats.tier).toLowerCase() }}.png" alt="{{ tierToRank(stats.tier) }} image">
+  </div>
+  <div>
+    <p>{{ tierToRank(stats.tier) }} {{ numberToRoman(stats.tier) }} <small>{{ floor(stats.ratings.rating) }} MMR</small></p>
+    <p>W/L : {{ stats.wins}} / {{ stats.losses }} ({{ percent(stats.average.wins) }}%)</p>
+  </div>
+</div>
+
+<div class="global">
+  <p><small>KDA : </small><span>{{ round(stats.average.kills) }} / {{ round(stats.average.deaths) }} / {{ round(stats.average.assists) }}</span></p>
+  <p><small>Damage : </small><span>{{ floor(stats.average.damage, true) }}</span></p>
+  <p><small>Taken : </small><span>{{ floor(stats.average.taken, true) }}</span></p>
+</div>
