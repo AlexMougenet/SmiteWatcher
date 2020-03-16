@@ -16,12 +16,8 @@
           <option *ngFor="let q of objectKeys(queues)" [value]="q">{{ queues[q] }}</option>
         </select>
       </div>
-      <div class="god-filter filter">
-        <label for="god">God:</label>
-        <select id="god" [ngModel]="filter[1].god" (ngModelChange)="filterGod(1, $event)">
-          <option [value]="null">All</option>
-          <option *ngFor="let g of api.gods" [value]="g.id">{{ g.name }}</option>
-        </select>
+      <div>
+        <app-auto-complete [placeholder]="'God'" [source]="api.gods" [value]="filter[1].god.name" (selectGod)="setGod(1, $event)"></app-auto-complete>
       </div>
 
       <app-global-info *ngIf="stats[1] && filter[1].queue === 450" [stats]="stats[1]" [matches]="matches[1]"></app-global-info>
@@ -33,6 +29,7 @@
   </div>
   <div class="column">
     <app-search (search)="search(2, $event)"></app-search>
+
   
     <div class="container-result" *ngIf="showSearchResults[2]">
       <div *ngFor="let p of players[2]">
@@ -48,12 +45,8 @@
           <option *ngFor="let q of objectKeys(queues)" [value]="q">{{ queues[q] }}</option>
         </select>
       </div>
-      <div class="god-filter filter">
-        <label for="god">God:</label>
-        <select id="god" [ngModel]="filter[2].god" (ngModelChange)="filterGod(2, $event)">
-          <option [value]="null">All</option>
-          <option *ngFor="let g of api.gods" [value]="g.id">{{ g.name }}</option>
-        </select>
+      <div>
+        <app-auto-complete [placeholder]="'God'" [source]="api.gods" [value]="filter[2].god.name" (selectGod)="setGod(2, $event)"></app-auto-complete>
       </div>
 
       <app-global-info *ngIf="stats[2] && filter[2].queue === 450" [stats]="stats[2]" [matches]="matches[2]"></app-global-info>
@@ -80,12 +73,8 @@
           <option *ngFor="let q of objectKeys(queues)" [value]="q">{{ queues[q] }}</option>
         </select>
       </div>
-      <div class="god-filter filter" filter>
-        <label for="god">God:</label>
-        <select id="god" [ngModel]="filter[3].god" (ngModelChange)="filterGod(3, $event)">
-          <option [value]="null">All</option>
-          <option *ngFor="let g of api.gods" [value]="g.id">{{ g.name }}</option>
-        </select>
+      <div>
+        <app-auto-complete [placeholder]="'God'" [source]="api.gods" [value]="filter[3].god.name" (selectGod)="setGod(3, $event)"></app-auto-complete>
       </div>
 
       <app-global-info *ngIf="stats[3] && filter[3].queue === 450" [stats]="stats[3]" [matches]="matches[3]"></app-global-info>

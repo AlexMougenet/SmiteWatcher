@@ -4,6 +4,7 @@ import { Player } from 'src/app/services/model/player.model';
 import { Match } from 'src/app/services/model/match.model';
 import { QUEUE_ID } from 'src/app/services/model/queue.model';
 import { ApiService } from 'src/app/services';
+import { God } from 'src/app/services/model/god.model';
 
 @Component({
   selector: 'app-home',
@@ -40,15 +41,15 @@ export class HomePage {
   filter = {
     1: {
       queue: 450,
-      god: null
+      god: {}
     },
     2: {
       queue: 450,
-      god: null
+      god: {}
     },
     3: {
       queue: 450,
-      god: null
+      god: {}
     }
   }
 
@@ -65,10 +66,6 @@ export class HomePage {
     this.filter[col].queue = parseInt(qId, 10) || null;
   }
 
-  public filterGod(col: number, gId: string) {
-    this.filter[col].god = parseInt(gId, 10) || null;
-  }
-
   public search(col: number, username: string) {
     this.smiteguru.search(username).then(p => {
       this.players[col] = p.data;
@@ -80,13 +77,11 @@ export class HomePage {
     this.smiteguru.historic(`${player.id}-${player.name}`).then(r => {
       const matches = r.data.matches.data;
       this.matches[col] = matches;
-      console.log(matches);
       this.showSearchResults[col] = false;
     });
 
     this.smiteguru.stats(`${player.id}-${player.name}`).then(r => {
       this.stats[col] = r.data.queues[450];
-      console.log(this.stats[col]);
     });
   }
 
@@ -98,11 +93,15 @@ export class HomePage {
       }
     }
     if (this.filter[col].god) {
-      if (this.filter[col].god && m.players.find(p => p.build !== undefined).champion !== this.filter[col].god) {
+      if (this.filter[col].god.id && m.players.find(p => p.build !== undefined).champion !== this.filter[col].god.id) {
         res = false;
       }
     }
     return res;
+  }
+
+  public setGod(col: number, g: God) {
+    this.filter[col].god = g;
   }
 
 }
