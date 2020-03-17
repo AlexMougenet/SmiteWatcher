@@ -7,7 +7,6 @@ import { God } from 'src/app/services/model/god.model';
   styleUrls: ['./auto-complete.component.scss']
 })
 export class AutoCompleteComponent implements OnChanges {
-  @Input() placeholder: string;
   @Input() value: string = '';
   @Input() source: God[];
   @Output() selectGod: EventEmitter<any> = new EventEmitter();
@@ -33,6 +32,7 @@ export class AutoCompleteComponent implements OnChanges {
     });
     if (v) {
       this.showProps = true;
+      this.matches.unshift({name: 'All', id: null});
     } else {
       this.setGod({name: '', id: null});
     }
@@ -40,7 +40,11 @@ export class AutoCompleteComponent implements OnChanges {
 
   public setGod(g: God) {
     this.showProps = false;
-    this.selectGod.emit(g);
+    if (g.id) {
+      this.selectGod.emit(g);
+    } else {
+      this.selectGod.emit({name: '', id: null});
+    }
   }
 
   public cancel() {

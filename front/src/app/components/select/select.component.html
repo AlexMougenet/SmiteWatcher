@@ -1,0 +1,5 @@
+<div class="backdrop" *ngIf="showProps" (click)="cancel()"></div>
+<input (click)="open()" class="value" type="text" [value]="source[value]" readonly/>
+<div class="propositions" *ngIf="showProps">
+  <p *ngFor="let q of objectKeys(source)" (click)="setQueue(q)">{{ source[q] }}</p>
+</div>

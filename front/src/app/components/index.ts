@@ -4,6 +4,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { MatchResultComponent } from './match-result/match-result.component';
 import { GlobalInfoComponent } from './global-info/global-info.component';
 import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
+import { SelectComponent } from './select/select.component';
 
 export const COMPONENTS = [
   CardComponent,
@@ -11,5 +12,6 @@ export const COMPONENTS = [
   SearchResultComponent,
   MatchResultComponent,
   GlobalInfoComponent,
-  AutoCompleteComponent
+  AutoCompleteComponent,
+  SelectComponent
 ];

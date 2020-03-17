@@ -27,9 +27,9 @@ export class HomePage {
     3: null,
   }
   showSearchResults = {
-    1: false,
-    2: false,
-    3: false,
+    1: true,
+    2: true,
+    3: true,
   }
   matches = {
     1: [],
@@ -62,8 +62,12 @@ export class HomePage {
     this.queues = QUEUE_ID;
   }
 
-  public filterQueue(col: number, qId: string) {
+  public setQueue(col: number, qId: string) {
     this.filter[col].queue = parseInt(qId, 10) || null;
+  }
+
+  public setGod(col: number, g: God) {
+    this.filter[col].god = g;
   }
 
   public search(col: number, username: string) {
@@ -98,10 +102,6 @@ export class HomePage {
       }
     }
     return res;
-  }
-
-  public setGod(col: number, g: God) {
-    this.filter[col].god = g;
   }
 
 }

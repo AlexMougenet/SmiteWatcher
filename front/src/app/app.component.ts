@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  connected = false;
 
-  constructor() {
+  constructor(private router: Router) {
+  }
+
+  public reload() {
+
+    this.router.navigateByUrl('/e', {skipLocationChange: true}).then(() =>
+    this.router.navigate(['/']));
   }
 
 }

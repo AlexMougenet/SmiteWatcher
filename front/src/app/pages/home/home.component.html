@@ -9,15 +9,11 @@
     </div>
   
     <div class="container-player" *ngIf="!showSearchResults[1]">
-      <div class="queue-filter filter">
-        <label for="queue">Queue :</label>
-        <select id="queue" [ngModel]="filter[1].queue" (ngModelChange)="filterQueue(1, $event)">
-          <option [value]="null">All</option>
-          <option *ngFor="let q of objectKeys(queues)" [value]="q">{{ queues[q] }}</option>
-        </select>
+      <div>
+        <app-select [value]="filter[1].queue" [source]="queues" (selectQueue)="setQueue(1, $event)"></app-select>
       </div>
       <div>
-        <app-auto-complete [placeholder]="'God'" [source]="api.gods" [value]="filter[1].god.name" (selectGod)="setGod(1, $event)"></app-auto-complete>
+        <app-auto-complete [source]="api.gods" [value]="filter[1].god.name" (selectGod)="setGod(1, $event)"></app-auto-complete>
       </div>
 
       <app-global-info *ngIf="stats[1] && filter[1].queue === 450" [stats]="stats[1]" [matches]="matches[1]"></app-global-info>
@@ -30,7 +26,6 @@
   <div class="column">
     <app-search (search)="search(2, $event)"></app-search>
 
-  
     <div class="container-result" *ngIf="showSearchResults[2]">
       <div *ngFor="let p of players[2]">
         <app-search-result [player]="p" (click)="display(2, p)"></app-search-result>
@@ -38,15 +33,11 @@
     </div>
   
     <div class="container-player" *ngIf="!showSearchResults[2]">
-      <div class="queue-filter filter">
-        <label for="queue">Queue :</label>
-        <select id="queue" [ngModel]="filter[2].queue" (ngModelChange)="filterQueue(2, $event)">
-          <option [value]="null">All</option>
-          <option *ngFor="let q of objectKeys(queues)" [value]="q">{{ queues[q] }}</option>
-        </select>
+      <div>
+        <app-select [value]="filter[2].queue" [source]="queues" (selectQueue)="setQueue(2, $event)"></app-select>
       </div>
       <div>
-        <app-auto-complete [placeholder]="'God'" [source]="api.gods" [value]="filter[2].god.name" (selectGod)="setGod(2, $event)"></app-auto-complete>
+        <app-auto-complete [source]="api.gods" [value]="filter[2].god.name" (selectGod)="setGod(2, $event)"></app-auto-complete>
       </div>
 
       <app-global-info *ngIf="stats[2] && filter[2].queue === 450" [stats]="stats[2]" [matches]="matches[2]"></app-global-info>
@@ -66,15 +57,11 @@
     </div>
   
     <div class="container-player" *ngIf="!showSearchResults[3]">
-      <div class="queue-filter filter">
-        <label for="queue">Queue :</label>
-        <select id="queue" [ngModel]="filter[3].queue" (ngModelChange)="filterQueue(3, $event)">
-          <option [value]="null">All</option>
-          <option *ngFor="let q of objectKeys(queues)" [value]="q">{{ queues[q] }}</option>
-        </select>
+      <div>
+        <app-select [value]="filter[3].queue" [source]="queues" (selectQueue)="setQueue(3, $event)"></app-select>
       </div>
       <div>
-        <app-auto-complete [placeholder]="'God'" [source]="api.gods" [value]="filter[3].god.name" (selectGod)="setGod(3, $event)"></app-auto-complete>
+        <app-auto-complete [source]="api.gods" [value]="filter[3].god.name" (selectGod)="setGod(3, $event)"></app-auto-complete>
       </div>
 
       <app-global-info *ngIf="stats[3] && filter[3].queue === 450" [stats]="stats[3]" [matches]="matches[3]"></app-global-info>

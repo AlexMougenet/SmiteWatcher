@@ -1,6 +1,6 @@
 <div class="backdrop" *ngIf="showProps" (click)="cancel()"></div>
 <div>
-  <input type="text" [placeholder]="placeholder" [ngModel]="value" (ngModelChange)="change($event)" (click)="open()">
+  <input type="text" placeholder="God" [ngModel]="value" (ngModelChange)="change($event)" (click)="open()">
   <div class="propositions" *ngIf="showProps">
     <p *ngFor="let p of matches" (click)="setGod(p)">{{ p.name }}</p>
   </div>

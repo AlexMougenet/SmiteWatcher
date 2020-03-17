@@ -1,4 +1,5 @@
 export var QUEUE_ID = {
+  null: "All",
   426: "Conquest",
   435: "Arena",
   440: "Ranked Dual",

@@ -6,24 +6,31 @@
   input {
     position: relative;
     z-index: 2;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .propositions p {
+    background-color: white;
+    color: #4A4A4A;
+    cursor: pointer;
+    padding: 5px;
+    width: 150px;
+    &:hover {
+      background-color: #dedede;
+      color: #03A9F4;
+    }
   }
 
   .propositions {
-    position: absolute;
     z-index: 3;
+    position: absolute;
     max-height: 390px;
     overflow: hidden;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
     p {
-      background-color: white;
-      color: #4A4A4A;
-      cursor: pointer;
-      padding: 5px;
-      width: 150px;
-      &:hover {
-        background-color: #dedede;
-        color: #03A9F4;
-      }
       &::first-letter {
         color: #007EB7;
       }
