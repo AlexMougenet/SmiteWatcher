@@ -10,7 +10,7 @@ export class WSService {
   constructor(private api: ApiService, private smiteguru: SmiteGuruService) {}
 
   public connect() {
-    this.subject = webSocket(`ws://${this.api.backendUrl}${this.api.WSbackendPort}`);
+    this.subject = webSocket(`${this.api.WSprotocol}${this.api.backendUrl}${this.api.WSbackendPort}`);
     this.subject.subscribe(
       msg => {
         const info = {type: msg[msg.length-1].type, col: msg[msg.length-1].col};

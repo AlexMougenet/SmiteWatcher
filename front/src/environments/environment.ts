@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  protocol: 'http://',
+  WSprotocol: 'ws://',
   backendUrl: 'localhost',
   backendPort: ':3000/',
   WSbackendPort: ':8081/'

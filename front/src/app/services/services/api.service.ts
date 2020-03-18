@@ -8,6 +8,8 @@ export class ApiService {
   gods: any;
   backendUrl = environment.backendUrl;
   WSbackendPort = environment.WSbackendPort;
+  protocol = environment.protocol;
+  WSprotocol = environment.WSprotocol;
 
   urls = {
     login: '/login',
@@ -19,7 +21,7 @@ export class ApiService {
   };
 
   requester = axios.create({
-    baseURL: `http://${environment.backendUrl}${environment.backendPort}`,
+    baseURL: `${environment.protocol}${environment.backendUrl}${environment.backendPort}`,
     timeout: 6000,
     headers: {
       'Content-Type': 'application/json'
