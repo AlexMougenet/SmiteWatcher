@@ -15,7 +15,7 @@ import { Player } from 'src/app/services/model/player.model';
 export class MatchResultComponent implements OnInit {
   @Input() match: Match;
   @Output() display: EventEmitter<any> = new EventEmitter();
-  player: MatchPlayer;
+  player: any; // MatchPlayer
   championName: string;
   bannedChampionNamesTeam1: string[] = [];
   bannedChampionNamesTeam2: string[] = [];

@@ -19,7 +19,7 @@ export class GlobalInfoComponent {
   public round(stat) {
     return (Math.floor(stat*100)/100);
   }
-  public floor(stat, toLocal) {
+  public floor(stat, toLocal=false) {
     if (toLocal) {
       return Math.floor(stat).toLocaleString();
     }
