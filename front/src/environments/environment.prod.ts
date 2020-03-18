@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  backendUrl: 'localhost',
+  backendPort: ':3000/',
+  WSbackendPort: ':8081/'
 };

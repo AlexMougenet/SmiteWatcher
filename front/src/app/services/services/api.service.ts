@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ApiService {
   gods: any;
-  backendUrl = environment.backendUrl
+  backendUrl = environment.backendUrl;
+  WSbackendPort = environment.WSbackendPort;
 
   urls = {
     login: '/login',
@@ -18,7 +19,7 @@ export class ApiService {
   };
 
   requester = axios.create({
-    baseURL: environment.backendUrl,
+    baseURL: `http://${environment.backendUrl}${environment.backendPort}`,
     timeout: 6000,
     headers: {
       'Content-Type': 'application/json'

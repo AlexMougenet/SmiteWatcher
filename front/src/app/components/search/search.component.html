@@ -1,6 +1,6 @@
 <ng-container>
   <div class="center">
-    <input type="text" [(ngModel)]="username" placeholder="Search username" (keyup.enter)="search.emit(username)">
+    <input type="text" [(ngModel)]="username" [placeholder]="placeholder ? placeholder : 'Search username'" (keyup.enter)="search.emit(username)">
     <button (click)="search.emit(username)" [disabled]="!username">Search</button>
   </div>
 </ng-container>

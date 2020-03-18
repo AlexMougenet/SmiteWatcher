@@ -1,6 +1,6 @@
 <ng-container>
   <div class="column">
-    <app-search (search)="search(1, $event)"></app-search>
+    <app-search [placeholder]="currentPlayer[1]" (search)="search(1, $event)"></app-search>
   
     <div class="container-result" *ngIf="showSearchResults[1]">
       <div *ngFor="let p of players[1]">
@@ -16,7 +16,7 @@
         <app-auto-complete [source]="api.gods" [value]="filter[1].god.name" (selectGod)="setGod(1, $event)"></app-auto-complete>
       </div>
 
-      <app-global-info *ngIf="stats[1] && filter[1].queue === 450" [stats]="stats[1]" [matches]="matches[1]"></app-global-info>
+      <app-global-info *ngIf="stats[1] && stats[1].queues && filter[1].queue === 450" [stats]="stats[1].queues[450]" [matches]="matches[1]"></app-global-info>
   
       <div *ngFor="let m of matches[1]">
         <app-match-result *ngIf="showMatch(1, m)" [match]="m" (display)="display(1, $event)" class="{{ m.winning_team === 1 ? 'win' : 'loose' }}"></app-match-result>
@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="column">
-    <app-search (search)="search(2, $event)"></app-search>
+    <app-search [placeholder]="currentPlayer[2]" (search)="search(2, $event)"></app-search>
 
     <div class="container-result" *ngIf="showSearchResults[2]">
       <div *ngFor="let p of players[2]">
@@ -40,7 +40,7 @@
         <app-auto-complete [source]="api.gods" [value]="filter[2].god.name" (selectGod)="setGod(2, $event)"></app-auto-complete>
       </div>
 
-      <app-global-info *ngIf="stats[2] && filter[2].queue === 450" [stats]="stats[2]" [matches]="matches[2]"></app-global-info>
+      <app-global-info *ngIf="stats[2] && stats[2].queues && filter[2].queue === 450" [stats]="stats[2].queues[450]" [matches]="matches[2]"></app-global-info>
 
       <div *ngFor="let m of matches[2]">
         <app-match-result *ngIf="showMatch(2, m)" [match]="m" (display)="display(2, $event)" class="{{ m.winning_team === 1 ? 'win' : 'loose' }}"></app-match-result>
@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="column">
-    <app-search (search)="search(3, $event)"></app-search>
+    <app-search [placeholder]="currentPlayer[3]" (search)="search(3, $event)"></app-search>
   
     <div class="container-result" *ngIf="showSearchResults[3]">
       <div *ngFor="let p of players[3]">
@@ -64,7 +64,7 @@
         <app-auto-complete [source]="api.gods" [value]="filter[3].god.name" (selectGod)="setGod(3, $event)"></app-auto-complete>
       </div>
 
-      <app-global-info *ngIf="stats[3] && filter[3].queue === 450" [stats]="stats[3]" [matches]="matches[3]"></app-global-info>
+      <app-global-info *ngIf="stats[3] && stats[3].queues && filter[3].queue === 450" [stats]="stats[3].queues[450]" [matches]="matches[3]"></app-global-info>
   
       <div *ngFor="let m of matches[3]">
         <app-match-result *ngIf="showMatch(3, m)" [match]="m" (display)="display(3,$event)" class="{{ m.winning_team === 1 ? 'win' : 'loose' }}"></app-match-result>

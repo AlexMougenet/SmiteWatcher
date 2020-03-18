@@ -39,6 +39,13 @@ export class HomePage {
   }
   queues: any;
 
+
+  currentPlayer = {
+    1: null,
+    2: null,
+    3: null,
+  }
+
   filter = {
     1: {
       queue: 450,
@@ -63,7 +70,54 @@ export class HomePage {
     this.queues = QUEUE_ID;
 
     this.ws.connect();
-    console.log(this)
+
+    this.smiteguru.getSearch1().subscribe(s1 => {
+      if (s1[0]) {
+        this.players[1] = s1;
+        this.currentPlayer[1] = s1[0].names[0].searchable;
+        this.showSearchResults[1] = true;
+      }
+    });
+    this.smiteguru.getSearch2().subscribe(s2 => {
+      if (s2[0]) {
+      this.players[2] = s2;
+      this.currentPlayer[2] = s2[0].names[0].searchable;
+      this.showSearchResults[2] = true;
+    }
+    });
+    this.smiteguru.getSearch3().subscribe(s3 => {
+      if (s3[0]) {
+      this.players[3] = s3;
+      this.currentPlayer[3] = s3[0].names[0].searchable;
+      this.showSearchResults[3] = true;
+    }
+    });
+
+    this.smiteguru.getStats1().subscribe(st1 => {
+      this.stats[1] = st1;
+      this.showSearchResults[1] = false;
+    });
+    this.smiteguru.getStats2().subscribe(st2 => {
+      this.stats[2] = st2;
+      this.showSearchResults[2] = false;
+    });
+    this.smiteguru.getStats3().subscribe(st3 => {
+      this.stats[3] = st3;
+      this.showSearchResults[3] = false;
+    });
+
+    this.smiteguru.getHistoric1().subscribe(h1 => {
+      this.matches[1] = h1;
+      this.showSearchResults[1] = false;
+    });
+    this.smiteguru.getHistoric2().subscribe(h2 => {
+      this.matches[2] = h2;
+      this.showSearchResults[2] = false;
+    });
+    this.smiteguru.getHistoric3().subscribe(h3 => {
+      this.matches[3] = h3;
+      this.showSearchResults[3] = false;
+    });
   }
 
   public setQueue(col: number, qId: string) {
@@ -75,21 +129,19 @@ export class HomePage {
   }
 
   public search(col: number, username: string) {
-    this.smiteguru.search(username).then(p => {
-      this.players[col] = p.data;
-      this.showSearchResults[col] = true;
+
+    this.smiteguru.search(col, username).then(p => {
+
     });
   }
 
   public display(col: number, player: Player) {
-    this.smiteguru.historic(`${player.id}-${player.name}`).then(r => {
-      const matches = r.data.matches.data;
-      this.matches[col] = matches;
-      this.showSearchResults[col] = false;
+
+    this.smiteguru.historic(col, `${player.id}-${player.name}`).then(r => {
+
     });
 
-    this.smiteguru.stats(`${player.id}-${player.name}`).then(r => {
-      this.stats[col] = r.data.queues[450];
+    this.smiteguru.stats(col, `${player.id}-${player.name}`).then(r => {
     });
   }
 

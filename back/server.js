@@ -43,8 +43,7 @@ app.post('/search', function (req, res) {
     r.on('end', () => {
       let data = Buffer.concat(chunks);
       let result = JSON.parse(data);
-      result.type = 'search';
-      result.col = req.body.col;
+      result.push({type: 'search', col: req.body.col});
       broadcast(result);
       res.send(result);
     });
@@ -61,9 +60,8 @@ app.post('/historic', function (req, res) {
     });
     r.on('end', () => {
       let data = Buffer.concat(chunks);
-      let result = JSON.parse(data);
-      result.type = 'historic';
-      result.col = req.body.col;
+      let result = [JSON.parse(data)];
+      result.push({type: 'historic', col: req.body.col});
       broadcast(result);
       res.send(result);
     });
@@ -80,9 +78,8 @@ app.post('/stats', function (req, res) {
     });
     r.on('end', () => {
       let data = Buffer.concat(chunks);
-      let result = JSON.parse(data);
-      result.type = 'stats';
-      result.col = req.body.col;
+      let result = [JSON.parse(data)];
+      result.push({type: 'stats', col: req.body.col});
       broadcast(result);
       res.send(result);
     });
@@ -93,7 +90,7 @@ app.post('/stats', function (req, res) {
 
 
 
-///
+/// WebSocket ///
 
 const WebSocket = require('ws');
 
@@ -101,21 +98,19 @@ const wss = new WebSocket.Server({ port: 8081 });
 
 wss.on('connection', function connection(ws) {
   console.log('ws connected');
-  // ws.on('message', function incoming(data) {
-  //   broadcast(data);
-  // });
 });
 
 function broadcast(data) {
   wss.clients.forEach(function each(client) {
     console.log('sending to a client');
     if (client.readyState === WebSocket.OPEN) {
+      console.log('sending', data);
       client.send(JSON.stringify(data));
     }
   });
 }
 
-///
+/// --------- ///
 
 
 

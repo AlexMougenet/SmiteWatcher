@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'http://localhost:3000/'
+  backendUrl: 'localhost',
+  backendPort: ':3000/',
+  WSbackendPort: ':8081/'
 };
 
 /*
