@@ -21,7 +21,7 @@ export class ApiService {
   };
 
   requester = axios.create({
-    baseURL: `${environment.protocol}${environment.backendUrl}${environment.backendPort}`,
+    baseURL: `${environment.protocol}${environment.backendUrl}${environment.backendPort ? environment.backendPort : ''}`,
     timeout: 6000,
     headers: {
       'Content-Type': 'application/json'

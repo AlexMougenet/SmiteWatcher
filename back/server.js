@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const https = require('https');
+const cors = require('cors');
 const app = express();
 
 const frontUrl = 'http://smite-watcher.herokuapp.com/';
@@ -17,13 +18,15 @@ const apiSmiteGuruUrls = {
   profiles: `${smiteGuruUrl}/profiles` // 1610525-CikiDark/matches?page=1
 };
 
+app.use(cors());
 app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', frontUrl);
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', frontUrl);
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   next();
+// });
+
 
 app.post('/login', function (req, res) {
   if(req.body.username === 'lb' && req.body.password === 'noob') {
