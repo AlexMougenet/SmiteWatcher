@@ -5,11 +5,11 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/smite-watcher'));
+app.use(express.static(__dirname + '/dist/SmiteWatcher'));
 
 app.get('/*', function(req,res) {
     
-res.sendFile(path.join(__dirname+'/dist/smite-watcher/index.html'));
+res.sendFile(path.join(__dirname+'/dist/SmiteWatcher/index.html'));
 });
 
 // Start the app by listening on the default Heroku port

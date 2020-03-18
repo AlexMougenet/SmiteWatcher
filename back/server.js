@@ -1,10 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
 const https = require('https');
 const app = express();
 
-const frontUrl = 'http://localhost:4200';
+const frontUrl = 'http://smite-watcher.herokuapp.com/';
 const options = {
   headers: {
     "x-api-key": "31f82e63-e734-44d0-8598-a5ee96fd6a3c"
@@ -114,6 +113,6 @@ function broadcast(data) {
 
 
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening on port 3000!');
 });
