@@ -42,7 +42,11 @@ app.post('/search', function (req, res) {
     });
     r.on('end', () => {
       let data = Buffer.concat(chunks);
-      res.send(JSON.parse(data));
+      let result = JSON.parse(data);
+      result.type = 'search';
+      result.col = req.body.col;
+      broadcast(result);
+      res.send(result);
     });
   }).on('error', (e) => {
     console.error(e);
@@ -57,7 +61,11 @@ app.post('/historic', function (req, res) {
     });
     r.on('end', () => {
       let data = Buffer.concat(chunks);
-      res.send(JSON.parse(data));
+      let result = JSON.parse(data);
+      result.type = 'historic';
+      result.col = req.body.col;
+      broadcast(result);
+      res.send(result);
     });
   }).on('error', (e) => {
     console.error(e);
@@ -72,12 +80,44 @@ app.post('/stats', function (req, res) {
     });
     r.on('end', () => {
       let data = Buffer.concat(chunks);
-      res.send(JSON.parse(data));
+      let result = JSON.parse(data);
+      result.type = 'stats';
+      result.col = req.body.col;
+      broadcast(result);
+      res.send(result);
     });
   }).on('error', (e) => {
     console.error(e);
   });
 });
+
+
+
+///
+
+const WebSocket = require('ws');
+
+const wss = new WebSocket.Server({ port: 8081 });
+
+wss.on('connection', function connection(ws) {
+  console.log('ws connected');
+  // ws.on('message', function incoming(data) {
+  //   broadcast(data);
+  // });
+});
+
+function broadcast(data) {
+  wss.clients.forEach(function each(client) {
+    console.log('sending to a client');
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify(data));
+    }
+  });
+}
+
+///
+
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');

@@ -10,9 +10,13 @@ export { SmiteGuruService } from './services/smiteguru.service';
 import { SmiteService } from './services/smite.service';
 export { SmiteService } from './services/smite.service'
 
+import { WSService } from './services/ws.service';
+export { WSService } from './services/ws.service'
+
 export const SERVICES = [
   AuthGuardService,
   ApiService,
   SmiteGuruService,
-  SmiteService
+  SmiteService,
+  WSService
 ];
