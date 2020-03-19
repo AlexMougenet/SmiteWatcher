@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "git add -A && git commit -m \"deploy\" && git push heroku master",
+    "heroku logs": "heroku logs --tail"
   },
   "author": "Aline Bastos",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "express": "^4.17.1",
     "https": "^1.0.0",
     "nodemon": "^2.0.2",
+    "socket.io": "^2.3.0",
     "ws": "^7.2.3"
   }
 }

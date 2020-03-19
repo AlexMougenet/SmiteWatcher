@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const https = require('https');
-const cors = require('cors');
 const app = express();
+const { Server } = require('ws');
+var CLIENTS = [];
+var CLIENTS_INTERVAL = {};
 
-const frontUrl = 'http://smite-watcher.herokuapp.com/';
 const options = {
   headers: {
     "x-api-key": "31f82e63-e734-44d0-8598-a5ee96fd6a3c"
@@ -18,14 +19,23 @@ const apiSmiteGuruUrls = {
   profiles: `${smiteGuruUrl}/profiles` // 1610525-CikiDark/matches?page=1
 };
 
-app.use(cors());
 app.use(bodyParser.json());
 
-// app.use(function(req, res, next) {
-//   res.header('Access-Control-Allow-Origin', frontUrl);
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   next();
-// });
+app.use(function(req, res, next) {
+  var allowedOrigins = ['http://smite-watcher.herokuapp.com', 'https://smite-watcher.herokuapp.com'];
+  var origin = req.headers.origin;
+  if(allowedOrigins.indexOf(origin) > -1){
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+
+var server = app.listen(process.env.PORT || 3000, function () {
+  console.log('Example app listening on port 3000!');
+});
 
 
 app.post('/login', function (req, res) {
@@ -94,28 +104,50 @@ app.post('/stats', function (req, res) {
 
 /// WebSocket ///
 
-const WebSocket = require('ws');
+const wss = new Server({server});
+wss.on('connection', (ws) => {
+  customId = getUniqueID();
+  ws.customId = customId;
+  ws.getUpdate = true;
+  CLIENTS.push(ws);
 
-const wss = new WebSocket.Server({ port: 8081 });
+  if (CLIENTS.length >= 2) {
+    console.log('ask for update');
+    CLIENTS[0].send(JSON.stringify([{type: 'update', col: null}]));
+  } else {
+    ws.getUpdate = false;
+  }
 
-wss.on('connection', function connection(ws) {
-  console.log('ws connected');
+  CLIENTS_INTERVAL[customId] = setInterval(() => {
+    ws.send(JSON.stringify([{type: 'ping', col: null}]));
+  }, 20000);
+  
+  CLIENTS[0].on('message', data => {
+    if (ws.getUpdate) {
+      console.log('send update', data);
+      ws.send(JSON.stringify(data));
+
+      ws.getUpdate = false;
+    }
+  });
+  
+  ws.on('close', () => {
+    console.log('Client disconnected');
+    var index = CLIENTS.indexOf(ws);
+    if (index !== -1) CLIENTS.splice(index, 1);
+    clearInterval(CLIENTS_INTERVAL[ws.customId]);
+  });
 });
 
 function broadcast(data) {
   wss.clients.forEach(function each(client) {
-    console.log('sending to a client');
-    if (client.readyState === WebSocket.OPEN) {
-      console.log('sending', data);
-      client.send(JSON.stringify(data));
-    }
+    client.send(JSON.stringify(data));
   });
 }
 
-/// --------- ///
-
-
-
-app.listen(process.env.PORT || 3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+function getUniqueID() {
+  function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+  return s4() + s4() + '-' + s4();
+};

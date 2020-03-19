@@ -4,5 +4,5 @@ export const environment = {
   WSprotocol: 'wss://',
   backendUrl: 'api-smite-watcher.herokuapp.com/',
   backendPort: null,
-  WSbackendPort: ':8081/'
+  WSbackendPort: null
 };

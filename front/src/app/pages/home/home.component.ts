@@ -64,9 +64,9 @@ export class HomePage {
   objectKeys = Object.keys;
 
   constructor(private smiteguru: SmiteGuruService, public api: ApiService, private ws: WSService) {
-    this.search(1, 'elvien');
-    this.search(2, 'naytars');
-    this.search(3, 'antraxxe');
+    // this.search(1, 'elvien');
+    // this.search(2, 'naytars');
+    // this.search(3, 'antraxxe');
     this.queues = QUEUE_ID;
 
     this.ws.connect();
