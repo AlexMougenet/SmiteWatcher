@@ -95,28 +95,40 @@ export class HomePage {
 
     this.smiteguru.getStats1().subscribe(st1 => {
       this.stats[1] = st1;
-      this.showSearchResults[1] = false;
+      if (st1) {
+        this.showSearchResults[1] = false;
+      }
     });
     this.smiteguru.getStats2().subscribe(st2 => {
       this.stats[2] = st2;
-      this.showSearchResults[2] = false;
+      if (st2) {
+        this.showSearchResults[2] = false;
+      }
     });
     this.smiteguru.getStats3().subscribe(st3 => {
       this.stats[3] = st3;
-      this.showSearchResults[3] = false;
+      if (st3) {
+        this.showSearchResults[3] = false;
+      }
     });
 
     this.smiteguru.getHistoric1().subscribe(h1 => {
       this.matches[1] = h1;
-      this.showSearchResults[1] = false;
+      if (h1.length) {
+        this.showSearchResults[1] = false;
+      }
     });
     this.smiteguru.getHistoric2().subscribe(h2 => {
       this.matches[2] = h2;
-      this.showSearchResults[2] = false;
+      if (h2.length) {
+        this.showSearchResults[2] = false;
+      }
     });
     this.smiteguru.getHistoric3().subscribe(h3 => {
       this.matches[3] = h3;
-      this.showSearchResults[3] = false;
+      if (h3.length) {
+        this.showSearchResults[3] = false;
+      }
     });
   }
 
@@ -158,6 +170,15 @@ export class HomePage {
       }
     }
     return res;
+  }
+
+  public isWin(m: Match) {
+    let p = m.players.find(p => p.build !== undefined);
+    return p.team === m.winning_team ? 'win' : 'loose';
+  }
+
+  public showStats(col: number) {
+    return this.stats[col] && this.stats[col].queues && this.stats[col].queues[this.filter[col].queue];
   }
 
 }

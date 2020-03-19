@@ -7,7 +7,8 @@
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "git add -A && git commit -m \"deploy\" && git push heroku master",
-    "heroku logs": "heroku logs --tail"
+    "heroku-push": "git push heroku master",
+    "heroku-logs": "heroku logs --tail"
   },
   "author": "Aline Bastos",
   "license": "ISC",

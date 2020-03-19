@@ -96,7 +96,7 @@ export class WSService {
   }
 
   public setStats(info, msg) {
-    if (msg[0] && msg[0].queues && msg[0].queues[450]) {
+    if (msg[0] && msg[0].queues) {
       switch(info.col) {
         case 1:
           this.smiteguru.stats1$.next(msg[0]);
