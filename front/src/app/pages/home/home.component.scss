@@ -6,6 +6,10 @@
   // padding: 0 30px;
   margin: auto;
 
+  .tab {
+    display: none;
+  }
+
   .column {
     width: 30%;
   }
@@ -25,5 +29,79 @@
     label {
       margin-right: 10px;
     }
+  }
+
+  @media (max-width: 1150px) {
+    .tab {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 90px;
+      left: calc(50% - 100px);
+      width: 220px;
+      border: 1px solid #099fe3;
+      border-radius: 2px;
+      span {
+        border-right: 1px solid #099fe3;
+        &:last-child {
+          border: none;
+        }
+        text-align: center;
+        width: calc(100% / 3 + 1px);
+        display: block;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+        &:hover, &.selected {
+          background-color: #dedede;
+          color: #099fe3;
+        }
+      }
+    }
+
+    .column {
+      margin: 40px auto;
+      width: 100%;
+      &:not(.selected) {
+        display: none;
+      }
+
+      .container-result {
+        justify-content: center;
+      }
+      app-search-result {
+        margin-top: 10px;
+      }
+
+      app-match-result, app-global-info {
+        width: 100% !important;
+      }
+
+      ::ng-deep {
+        app-global-info {
+          .global {
+            flex-flow: row wrap !important;
+            justify-content: space-around !important;
+          }
+        }
+        app-match-result {
+          .row-1 {
+            flex-flow: row wrap !important;
+            justify-content: space-around !important;
+            .kda-info {
+              width: 100% !important;
+              .global-info {
+                display: flex !important;
+                justify-content: space-around !important;
+                width: 100% !important;
+                margin-top: 5px !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
   }
 }

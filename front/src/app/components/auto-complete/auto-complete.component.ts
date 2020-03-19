@@ -32,7 +32,6 @@ export class AutoCompleteComponent implements OnChanges {
     });
     if (v) {
       this.showProps = true;
-      this.matches.unshift({name: 'All', id: null});
     } else {
       this.setGod({name: '', id: null});
     }

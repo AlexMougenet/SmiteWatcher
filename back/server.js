@@ -22,7 +22,7 @@ const apiSmiteGuruUrls = {
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
-  var allowedOrigins = ['http://smite-watcher.herokuapp.com', 'https://smite-watcher.herokuapp.com'];
+  var allowedOrigins = ['http://smite-watcher.herokuapp.com', 'https://smite-watcher.herokuapp.com', 'http://localhost:4200', 'localhost:4200'];
   var origin = req.headers.origin;
   if(allowedOrigins.indexOf(origin) > -1){
     res.setHeader('Access-Control-Allow-Origin', origin);

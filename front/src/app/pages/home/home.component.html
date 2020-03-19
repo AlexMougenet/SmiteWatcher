@@ -1,5 +1,10 @@
 <ng-container>
-  <div class="column">
+  <div class="tab">
+    <span [class.selected]="tabs[1]" (click)="selectTab(1)">Tab 1</span>
+    <span [class.selected]="tabs[2]" (click)="selectTab(2)">Tab 2</span>
+    <span [class.selected]="tabs[3]" (click)="selectTab(3)">Tab 3</span>
+  </div>
+  <div class="column tab-1" [class.selected]="tabs[1]">
     <app-search [placeholder]="currentPlayer[1]" (search)="search(1, $event)"></app-search>
   
     <div class="container-result" *ngIf="showSearchResults[1]">
@@ -23,7 +28,7 @@
       </div>
     </div>
   </div>
-  <div class="column">
+  <div class="column tab-2" [class.selected]="tabs[2]">
     <app-search [placeholder]="currentPlayer[2]" (search)="search(2, $event)"></app-search>
 
     <div class="container-result" *ngIf="showSearchResults[2]">
@@ -47,7 +52,7 @@
       </div>
     </div>
   </div>
-  <div class="column">
+  <div class="column tab-3" [class.selected]="tabs[3]">
     <app-search [placeholder]="currentPlayer[3]" (search)="search(3, $event)"></app-search>
   
     <div class="container-result" *ngIf="showSearchResults[3]">
@@ -71,4 +76,7 @@
       </div>
     </div>
   </div>
+  <audio #audio>
+    <source src='assets/paul-noob.wav' type="audio/wav">
+  </audio>
 </ng-container>

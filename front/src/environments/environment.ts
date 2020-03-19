@@ -8,7 +8,7 @@ export const environment = {
   WSprotocol: 'ws://',
   backendUrl: 'localhost',
   backendPort: ':3000/',
-  WSbackendPort: ':8081/'
+  WSbackendPort: ':3000/'
 };
 
 /*

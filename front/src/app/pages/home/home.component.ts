@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { SmiteGuruService } from 'src/app/services/services/smiteguru.service';
 import { Player } from 'src/app/services/model/player.model';
 import { Match } from 'src/app/services/model/match.model';
@@ -17,6 +17,12 @@ import { God } from 'src/app/services/model/god.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomePage {
+  @ViewChild('audio') audio: ElementRef;
+  tabs = {
+    1: false,
+    2: false,
+    3: true,
+  }
   players = {
     1: [],
     2: [],
@@ -179,6 +185,19 @@ export class HomePage {
 
   public showStats(col: number) {
     return this.stats[col] && this.stats[col].queues && this.stats[col].queues[this.filter[col].queue];
+  }
+
+  public selectTab(tab: number) {
+    let sound = this.audio.nativeElement;
+    sound.pause();
+    sound.currentTime = 0;
+    sound.play();
+    this.tabs = {
+      1: false,
+      2: false,
+      3: false,
+    };
+    this.tabs[tab] = true;
   }
 
 }
