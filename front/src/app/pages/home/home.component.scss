@@ -42,7 +42,9 @@
       width: 220px;
       border: 1px solid #099fe3;
       border-radius: 2px;
+      user-select: none;
       span {
+        user-select: none;
         border-right: 1px solid #099fe3;
         &:last-child {
           border: none;
