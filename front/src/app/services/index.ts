@@ -11,12 +11,16 @@ import { SmiteService } from './services/smite.service';
 export { SmiteService } from './services/smite.service'
 
 import { WSService } from './services/ws.service';
-export { WSService } from './services/ws.service'
+export { WSService } from './services/ws.service';
+
+import { LoaderService } from './services/loader.service';
+export { LoaderService } from './services/loader.service';
 
 export const SERVICES = [
   AuthGuardService,
   ApiService,
   SmiteGuruService,
   SmiteService,
-  WSService
+  WSService,
+  LoaderService
 ];

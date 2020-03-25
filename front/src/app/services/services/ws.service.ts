@@ -2,15 +2,32 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { webSocket, WebSocketSubject } from "rxjs/webSocket";
 import { SmiteGuruService } from './smiteguru.service';
+import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Injectable()
 export class WSService {
   subject: WebSocketSubject<any>;
 
-  constructor(private api: ApiService, private smiteguru: SmiteGuruService) {}
+  handshake = true;
+
+  constructor(private api: ApiService, private smiteguru: SmiteGuruService, private router: Router, private notifier: NotifierService) {
+    console.log(this);
+  }
+
+  public open() {
+    this.subject = webSocket(`${this.api.WSprotocol}${this.api.backendUrl}${this.api.WSbackendPort ? this.api.WSbackendPort : ''}`);
+    if (this.handshake) {
+      this.notifier.notify(
+        'success',
+        'Connected'
+      );
+      this.handshake = false;
+    }
+  }
 
   public connect() {
-    this.subject = webSocket(`${this.api.WSprotocol}${this.api.backendUrl}${this.api.WSbackendPort ? this.api.WSbackendPort : ''}`);
+    this.open();
     this.subject.subscribe(
       msg => {
         const info = {type: msg[msg.length-1].type, col: msg[msg.length-1].col};
@@ -57,10 +74,15 @@ export class WSService {
             this.setStats(info, msg);
           }
         }
-
-
       },
-      err => console.error(err),
+      err => {
+        this.handshake = true;
+        this.open();
+        this.error('Connection lost');
+        console.error(err);
+        // this.router.navigateByUrl('/e', {skipLocationChange: true}).then(() =>
+        // this.router.navigate(['/']));
+      },
       () => console.log('complete')
     );
   }
@@ -77,6 +99,9 @@ export class WSService {
         this.smiteguru.search3$.next(msg);
         break;
     }
+    if (msg.length === 0) {
+      this.error(`Column n°${info.col} : No profile found`);
+    }
   }
 
   public setHistoric(info, msg) {
@@ -92,6 +117,9 @@ export class WSService {
           this.smiteguru.historic3$.next(msg[0].matches.data);
           break;
       }
+    }
+    if (msg[0].matches.data.length === 0) {
+      this.error(`Column n°${info.col} : Profile is private, or no recent matches were found`);
     }
   }
 
@@ -111,4 +139,10 @@ export class WSService {
     }
   }
 
+  public error(msg: string) {
+    this.notifier.notify(
+      'error',
+      msg
+    );
+  }
 }

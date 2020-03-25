@@ -17,3 +17,136 @@
     }
   }
 }
+
+.loadingBarBackground {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  top: 78px;
+  left: 0;
+  background-color: #099fe3;
+  .loadingBar {
+    opacity: 1;
+    height: 2px;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(255,255,255,0.23), 0 3px 6px rgba(255,255,255,0.23);
+    transition: width .15s ease-in-out, opacity .8s ease-in-out;
+  }
+}
+
+
+// Notifications
+::ng-deep {
+  notifier-notification {
+    cursor: pointer;
+  }
+  .notifier {
+    &__container {
+      * {
+        box-sizing: border-box;
+      }
+      &-list {
+        margin: {
+          top: 0;
+          bottom: 0;
+        }
+        padding: {
+          left: 0;
+        }
+        list-style-type: none;
+      }
+    }
+    &__notification {
+      display: block;
+      position: fixed; // Overlay
+      visibility: hidden; // Notifications are hidden by default, and get shown (or animated in) dynamically by the Angular component
+      z-index: 10000; // Pretty much random ...
+      // This attribute forces this element to be rendered on a new layer, by the GPU, in order to improve its performance (#perfmatters)
+      will-change: transform;
+      // This attribute improves the overall scrolling performance for fixed position elements, such as this one (#perfmatters)
+      // See <https://benfrain.com/improving-css-performance-fixed-position-elements/>
+      backface-visibility: hidden;
+    }
+  }
+  $notifier-shadow-color: rgba(0, 0, 0, .2) !default;
+  .notifier__notification--material {
+    border-radius: 3px;
+    box-shadow: 0 1px 3px $notifier-shadow-color;
+    cursor: default; // Default cursor, even when hovering over text
+    padding: {
+      top: 11px;
+      right: 26px;
+      bottom: 10px;
+      left: 26px;
+    }
+      .notifier__notification {
+          &-message {
+        display: inline-block;
+        margin: { // Reset paragraph default styles
+          top: 0;
+          bottom: 0;
+        }
+        vertical-align: top;
+        line-height: 32px;
+        font-size: 15px;
+      }
+          &-button {
+        display: inline-block;
+        transition: opacity .2s ease;
+        opacity: .5;
+        margin: {
+          right: -10px;
+          left: 10px;
+        };
+        margin: {
+          right: auto;
+          left: auto;
+        }
+        outline: none;
+        border: none;
+        background: none;
+        cursor: pointer; // Make it obvious that the "button" (or, more honestly, icon) is clickable (#UX)
+        padding: 6px;
+        width: 32px;
+        height: 32px;
+        vertical-align: top;
+              &:hover,
+        &:focus {
+          opacity: 1; // Make me "feel" the clickability with a transparency change (#UX)
+        }
+              &:active {
+          transform: scale(.82); // Make me "feel" the click by a push back (#UX)
+          opacity: 1;
+        }
+      }
+    }
+  }
+  $notifier-error-background-color: #D9534F !default;
+  $notifier-error-font-color: #FFF !default;
+  $notifier-error-icon-color: #FFF !default;
+  .notifier__notification--error {
+    width: fit-content;
+    background-color: $notifier-error-background-color;
+    color: $notifier-error-font-color;
+    .notifier__notification-button {
+      margin-top: 0;
+    }
+    .notifier__notification-button-icon { // 16x16 fixed size
+      fill: $notifier-error-icon-color;
+    }
+  }
+  $notifier-success-background-color: #5CB85C !default;
+  $notifier-success-font-color: #FFF !default;
+  $notifier-success-icon-color: #FFF !default;
+  .notifier__notification--success {
+    width: fit-content;
+    background-color: $notifier-success-background-color;
+    color: $notifier-success-font-color;
+    .notifier__notification-button {
+      margin-top: 0;
+    }
+    .notifier__notification-button-icon { // 16x16 fixed size
+      fill: $notifier-success-icon-color;
+    }
+  }
+}

@@ -12,7 +12,6 @@ export class AppComponent {
   }
 
   public reload() {
-
     this.router.navigateByUrl('/e', {skipLocationChange: true}).then(() =>
     this.router.navigate(['/']));
   }
